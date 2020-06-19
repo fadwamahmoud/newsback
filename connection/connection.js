@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const { DB_HOST, PORT } = require("../configuration/envChecker");
+const { DB_HOST } = require("../configuration/envChecker");
 mongoose.connect(
   DB_HOST,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
@@ -12,8 +12,8 @@ mongoose.connect(
     }
 
     console.log("connected successfully");
-    app.listen(PORT, () =>
-      console.log(`listening at http://localhost:${PORT}`)
+    app.listen(process.env.PORT || 5000, () =>
+      console.log(`listening at http://localhost:${process.env.PORT}`)
     );
   }
 );
