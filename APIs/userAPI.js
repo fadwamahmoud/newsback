@@ -143,24 +143,30 @@ router.patch(
 );
 
 // get customized sources from subscription array
-router.get("/feed", checkAuthorization(), validate, async (req, res, next) => {
-  try {
-    const currentUser = await verifyUser(req);
-    if (!currentUser) {
-      throw new CustomError({
-        message: "user not authenticated",
-        status: 401,
-      });
-    } else {
-      const news = await currentUser.getNews();
-      // returns strnig in case of no subscriptions
-      if (news) return res.status(202).send(news.articles);
-      return res.status(200).send("no subscriptions");
+router.get(
+  "/feed/:page",
+  checkAuthorization(),
+  validate,
+  async (req, res, next) => {
+    try {
+      const currentUser = await verifyUser(req);
+
+      if (!currentUser) {
+        throw new CustomError({
+          message: "user not authenticated",
+          status: 401,
+        });
+      } else {
+        const news = await currentUser.getNews(req.params.page);
+        // returns strnig in case of no subscriptions
+        if (news) return res.status(200).send(news);
+        return res.status(200).send("no subscriptions");
+      }
+    } catch (err) {
+      next(err);
     }
-  } catch (err) {
-    next(err);
   }
-});
+);
 
 // get all sources from /sources endpoint
 router.get(

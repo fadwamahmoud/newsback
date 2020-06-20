@@ -6,6 +6,16 @@ const sourceAPI = require("./APIs/sourceAPI");
 
 app.use(cors());
 // body parsing
+
 app.use(express.json());
 app.use("/user", userAPI);
 app.use("/source", sourceAPI);
+// error handler
+app.use((err, req, res, next) => {
+  res.status(err.status).json({
+    status: "error",
+    statusCode: err.status,
+    details: err.details,
+    message: err.message,
+  });
+});

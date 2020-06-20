@@ -13,8 +13,8 @@ const verifyUser = async (req) => {
   } catch (error) {
     throw new CustomError({
       status: 404,
-      details: "blabla",
-      message: "verification error",
+      details: "user's token is expired or token was not provided",
+      message: "token verification error",
     });
   }
 };
