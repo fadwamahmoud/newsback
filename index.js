@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 
 const { app } = require("./connection/connection");
 const userAPI = require("./APIs/userAPI");
 const headlinesAPI = require("./APIs/headlinesAPI");
 
+app.use(helmet());
 app.use(cors());
 // body parsing
 
@@ -22,7 +24,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  return res.json({
+  return res.status(500).json({
     status: "error",
     statusCode: err.status,
     details: err.details,
