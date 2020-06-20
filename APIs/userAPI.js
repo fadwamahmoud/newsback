@@ -3,7 +3,6 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const _ = require("lodash");
-const axios = require("axios");
 const CustomError = require("../helpers/customError");
 const { JWT_SECRET } = require("../configuration/envChecker");
 const verifyUser = require("../helpers/userVerification");
@@ -14,6 +13,7 @@ const {
   checkAuthorization,
   validate,
 } = require("../middleware/validator");
+const { getSources } = require("../helpers/getSources");
 
 // register
 router.post(
@@ -177,19 +177,7 @@ router.get(
           status: 401,
         });
       } else {
-        const subscriptions = await currentUser.get("subscriptions");
-        const { data } = await axios.get(
-          `https://newsapi.org/v2/sources?language=en`,
-          {
-            headers: { "X-Api-Key": "45b7e93a7b644836a0fb6abc2e6bb278" },
-          }
-        );
-        const newSources = data.sources.map((source) => {
-          if (subscriptions.includes(source.id)) {
-            return { ...source, status: true };
-          }
-          return { ...source, status: false };
-        });
+        const newSources = await getSources(currentUser);
         return res.status(202).send(newSources);
       }
     } catch (err) {

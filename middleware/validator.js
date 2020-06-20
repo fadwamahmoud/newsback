@@ -24,8 +24,6 @@ const checkAuthorization = () => [
     .withMessage("unauthorized"),
 ];
 
-const getPostRules = () => [param("postId"), header("authorization")];
-
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {

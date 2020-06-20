@@ -1,17 +1,16 @@
 const express = require("express");
 const cors = require("cors");
-const MongoClient = require("mongodb").MongoClient;
 
 const { app } = require("./connection/connection");
 const userAPI = require("./APIs/userAPI");
-const sourceAPI = require("./APIs/sourceAPI");
+const headlinesAPI = require("./APIs/headlinesAPI");
 
 app.use(cors());
 // body parsing
 
 app.use(express.json());
 app.use("/user", userAPI);
-app.use("/source", sourceAPI);
+app.use("/headlines", headlinesAPI);
 // error handler
 app.use((err, req, res, next) => {
   if (err.message.startsWith("E11000")) {
@@ -23,7 +22,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  return res.status(err.status).json({
+  return res.json({
     status: "error",
     statusCode: err.status,
     details: err.details,
