@@ -51,7 +51,6 @@ router.post(
       body: { email, password },
     } = req;
     try {
-      //TODO exists?
       const user = await User.findOne({ email });
       if (!user) {
         throw new CustomError({
@@ -96,8 +95,6 @@ router.patch(
       } = req;
       const currentUser = await verifyUser(req);
 
-      // TODO check if source exists??
-
       if (!currentUser) {
         throw new CustomError({
           message: "user not authenticated",
@@ -108,7 +105,6 @@ router.patch(
         return res.status(202).send();
       }
     } catch (err) {
-      console.log(err);
       next(err);
     }
   }
@@ -136,7 +132,6 @@ router.patch(
         return res.status(202).send();
       }
     } catch (err) {
-      console.log(err);
       next(err);
     }
   }

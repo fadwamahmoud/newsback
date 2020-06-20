@@ -12,7 +12,6 @@ mongoose.connect(
     }
 
     console.log("connected successfully");
-    console.log(process.env.PORT);
     app.listen(process.env.PORT || 5000, () =>
       console.log(`listening at http://localhost:${process.env.PORT}`)
     );
