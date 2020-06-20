@@ -5,7 +5,7 @@ async function getSources(currentUser) {
   const { data } = await axios.get(
     `https://newsapi.org/v2/sources?language=en`,
     {
-      headers: { "X-Api-Key": "45b7e93a7b644836a0fb6abc2e6bb278" },
+      headers: { "X-Api-Key": "99b2e87ef38f4ed3ad53e88d95386c30" },
     }
   );
   const newSources = data.sources.map((source) => {
