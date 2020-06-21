@@ -28,10 +28,9 @@ A Node js restful API that serves all the latest news using the [NewsAPI](https:
 
 ### Dependencies
 
-*[Mongoose](https://mongoosejs.com/)- MongoDB object modeling for Node.js. Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
+* [Mongoose](https://mongoosejs.com/)- MongoDB object modeling for Node.js. Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
 * [express-validator](https://express-validator.github.io/docs/) - express-validator is a set of express.js middlewares that wraps validator.js validator and sanitizer functions.
 *  [lodash](https://www.npmjs.com/package/lodash) - node utility library that provides helpful methods for modularity, performance & extras.
-*  [@hapi/joi](https://www.npmjs.com/package/@hapi/joi) - The most powerful schema description language and data validator for JavaScript. Used for registeration and login form validation.
 * [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js that supprts automatic transforms for JSON data. Used for making requests to the NewsAPI endpoints.
  ### Security 
 
@@ -46,5 +45,5 @@ A Node js restful API that serves all the latest news using the [NewsAPI](https:
 
 ### Deployment
 
-[Heroku](https://dashboard.heroku.com/apps) - a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+* [Heroku](https://dashboard.heroku.com/apps) - a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
 
