@@ -46,5 +46,5 @@ A Node js restful API that serves all the latest news using the [NewsAPI](https:
 ### Deployment
 
 * [Heroku](https://dashboard.heroku.com/apps) - a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
-### https://newsclientside.herokuapp.com
+### https://newsback.herokuapp.com
 
